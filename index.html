@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ResQLink | Emergency Response</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet Map -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="#home" class="brand">
+
+            <div class="brand-icon">
+                🛡️
+            </div>
+
+            <div>
+                <h2>ResQ<span>Link</span></h2>
+                <small>Emergency Response</small>
+            </div>
+
+        </a>
+
+
+        <button id="menuBtn" class="menu-btn">
+            ☰
+        </button>
+
+
+        <nav id="navMenu">
+
+            <a href="#home">Home</a>
+
+            <a href="#dashboard">Dashboard</a>
+
+            <a href="#emergency">Emergency</a>
+
+            <a href="#volunteers">Volunteers</a>
+
+            <a href="#mapSection">Map</a>
+
+            <a href="#resources">Resources</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section id="home" class="hero">
+
+    <div class="hero-background"></div>
+
+    <div class="container hero-content">
+
+        <div class="hero-left">
+
+            <div class="status-pill">
+                <span></span>
+                RESPONSE SYSTEM ONLINE
+            </div>
+
+            <h1>
+                One Platform.
+                <br>
+                <strong>Faster Emergency Response.</strong>
+            </h1>
+
+            <p>
+                ResQLink connects people in need with volunteers,
+                emergency resources and local support — all from one
+                simple platform.
+            </p>
+
+            <div class="hero-actions">
+
+                <button
+                    class="btn btn-danger"
+                    data-scroll="#emergency"
+                >
+                    🚨 Report Emergency
+                </button>
+
+                <button
+                    class="btn btn-light"
+                    data-scroll="#volunteerFormSection"
+                >
+                    🤝 Join as Volunteer
+                </button>
+
+            </div>
+
+            <div class="hero-mini-stats">
+
+                <div>
+                    <strong id="heroRequests">0</strong>
+                    <span>Requests</span>
+                </div>
+
+                <div>
+                    <strong id="heroVolunteers">0</strong>
+                    <span>Volunteers</span>
+                </div>
+
+                <div>
+                    <strong id="heroResources">0</strong>
+                    <span>Resources</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-panel">
+
+            <div class="panel-top">
+
+                <span>LIVE SYSTEM</span>
+
+                <span class="live-dot"></span>
+
+            </div>
+
+            <div class="radar">
+
+                <div class="radar-ring ring-one"></div>
+                <div class="radar-ring ring-two"></div>
+                <div class="radar-ring ring-three"></div>
+
+                <div class="radar-center">
+                    🛡️
+                </div>
+
+            </div>
+
+            <h3>Community Protection</h3>
+
+            <p>
+                Coordinating emergency requests,
+                volunteers and resources.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboard" class="section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>OVERVIEW</span>
+
+            <h2>Response Dashboard</h2>
+
+            <p>
+                Real-time overview of the community response system.
+            </p>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+            <div class="stat-card red">
+
+                <div class="stat-icon">🚨</div>
+
+                <div>
+                    <span>Active Requests</span>
+                    <strong id="activeCount">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card green">
+
+                <div class="stat-icon">✓</div>
+
+                <div>
+                    <span>Resolved</span>
+                    <strong id="resolvedCount">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card blue">
+
+                <div class="stat-icon">🤝</div>
+
+                <div>
+                    <span>Volunteers</span>
+                    <strong id="volunteerCount">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card purple">
+
+                <div class="stat-icon">🏠</div>
+
+                <div>
+                    <span>Resources</span>
+                    <strong id="resourceCount">0</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EMERGENCY ================= -->
+
+<section id="emergency" class="section emergency-section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>EMERGENCY CENTER</span>
+
+            <h2>Report an Emergency</h2>
+
+            <p>
+                Submit a request and help can be coordinated quickly.
+            </p>
+
+        </div>
+
+
+        <div class="emergency-layout">
+
+            <!-- FORM -->
+
+            <div class="glass-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <span class="number">01</span>
+
+                        <div>
+                            <h3>Emergency Details</h3>
+                            <p>Tell us what happened.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <form id="emergencyForm">
+
+                    <div class="input-row">
+
+                        <div class="input-group">
+
+                            <label>Your Name *</label>
+
+                            <input
+                                id="emergencyName"
+                                type="text"
+                                placeholder="Enter your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Phone</label>
+
+                            <input
+                                id="emergencyPhone"
+                                type="tel"
+                                placeholder="+91 XXXXX XXXXX"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-row">
+
+                        <div class="input-group">
+
+                            <label>Emergency Type *</label>
+
+                            <select id="emergencyType" required>
+
+                                <option value="">
+                                    Select type
+                                </option>
+
+                                <option value="Medical">
+                                    🏥 Medical
+                                </option>
+
+                                <option value="Rescue">
+                                    🚑 Rescue
+                                </option>
+
+                                <option value="Fire">
+                                    🔥 Fire
+                                </option>
+
+                                <option value="Food">
+                                    🍱 Food
+                                </option>
+
+                                <option value="Water">
+                                    💧 Water
+                                </option>
+
+                                <option value="Shelter">
+                                    🏠 Shelter
+                                </option>
+
+                                <option value="Other">
+                                    ⚠️ Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>People *</label>
+
+                            <input
+                                id="peopleCount"
+                                type="number"
+                                min="1"
+                                value="1"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Location *</label>
+
+                        <input
+                            id="emergencyLocation"
+                            type="text"
+                            placeholder="Example: Golden Temple, Amritsar"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="location-controls">
+
+                        <button
+                            type="button"
+                            id="pickLocation"
+                            class="map-pick-btn"
+                        >
+                            📍 Pick on Map
+                        </button>
+
+                        <span id="locationStatus">
+                            No map location selected
+                        </span>
+
+                    </div>
+
+
+                    <input type="hidden" id="latitude">
+
+                    <input type="hidden" id="longitude">
+
+
+                    <div class="input-row">
+
+                        <div class="input-group">
+
+                            <label>Priority</label>
+
+                            <select id="priority">
+
+                                <option value="High">
+                                    🔴 High
+                                </option>
+
+                                <option value="Medium" selected>
+                                    🟠 Medium
+                                </option>
+
+                                <option value="Low">
+                                    🟢 Low
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>People Type</label>
+
+                            <select id="peopleType">
+
+                                <option value="General">
+                                    General
+                                </option>
+
+                                <option value="Children">
+                                    Children
+                                </option>
+
+                                <option value="Elderly">
+                                    Elderly
+                                </option>
+
+                                <option value="Injured">
+                                    Injured
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Additional Information</label>
+
+                        <textarea
+                            id="emergencyDetails"
+                            placeholder="Describe the situation..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-danger submit-btn"
+                    >
+                        🚨 Submit Emergency Request
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- INFO -->
+
+            <div class="response-card">
+
+                <div class="response-icon">
+                    ⚡
+                </div>
+
+                <h3>How ResQLink Works</h3>
+
+                <p>
+                    Every emergency follows a simple response process.
+                </p>
+
+
+                <div class="steps">
+
+                    <div class="step">
+
+                        <div>1</div>
+
+                        <span>
+                            Submit emergency request
+                        </span>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div>2</div>
+
+                        <span>
+                            Response team reviews request
+                        </span>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div>3</div>
+
+                        <span>
+                            Volunteer is assigned
+                        </span>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div>4</div>
+
+                        <span>
+                            Assistance is completed
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="emergency-warning">
+
+                    <strong>⚠️ Demo Project</strong>
+
+                    <p>
+                        This is a student project demonstration.
+                        For real emergencies, contact official emergency services.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REQUESTS ================= -->
+
+<section class="section requests-section">
+
+    <div class="container">
+
+        <div class="section-title split-title">
+
+            <div>
+
+                <span>REQUEST CENTER</span>
+
+                <h2>Emergency Requests</h2>
+
+                <p>
+                    Manage incoming community requests.
+                </p>
+
+            </div>
+
+            <button
+                id="clearRequests"
+                class="outline-btn"
+            >
+                Clear Demo Data
+            </button>
+
+        </div>
+
+
+        <div id="requestsList" class="request-grid">
+
+            <div class="empty-box">
+
+                <div>📭</div>
+
+                <h3>No requests yet</h3>
+
+                <p>
+                    Emergency requests will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= VOLUNTEER ================= -->
+
+<section id="volunteerFormSection" class="section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>COMMUNITY NETWORK</span>
+
+            <h2>Become a Volunteer</h2>
+
+            <p>
+                Join the response network and help your community.
+            </p>
+
+        </div>
+
+
+        <div class="volunteer-layout">
+
+            <div class="volunteer-visual">
+
+                <div class="volunteer-circle">
+                    🤝
+                </div>
+
+                <h3>Be Someone's Help</h3>
+
+                <p>
+                    Your time, skills and support can make
+                    emergency response faster.
+                </p>
+
+                <div class="volunteer-points">
+
+                    <span>✓ Flexible availability</span>
+
+                    <span>✓ Skill-based assignment</span>
+
+                    <span>✓ Local community support</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="glass-card" id="volunteers">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <span class="number">02</span>
+
+                        <div>
+                            <h3>Volunteer Registration</h3>
+                            <p>Register your availability.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <form id="volunteerForm">
+
+                    <div class="input-row">
+
+                        <div class="input-group">
+
+                            <label>Full Name *</label>
+
+                            <input
+                                id="volunteerName"
+                                type="text"
+                                placeholder="Your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Phone *</label>
+
+                            <input
+                                id="volunteerPhone"
+                                type="tel"
+                                placeholder="+91 XXXXX XXXXX"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Skill *</label>
+
+                        <select id="volunteerSkill" required>
+
+                            <option value="">
+                                Select skill
+                            </option>
+
+                            <option value="Medical">
+                                🏥 Medical
+                            </option>
+
+                            <option value="Rescue">
+                                🚑 Rescue
+                            </option>
+
+                            <option value="Transportation">
+                                🚗 Transportation
+                            </option>
+
+                            <option value="Food Distribution">
+                                🍱 Food Distribution
+                            </option>
+
+                            <option value="Shelter Support">
+                                🏠 Shelter Support
+                            </option>
+
+                            <option value="General Support">
+                                🤝 General Support
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-row">
+
+                        <div class="input-group">
+
+                            <label>Availability</label>
+
+                            <select id="volunteerAvailability">
+
+                                <option>
+                                    Available Now
+                                </option>
+
+                                <option>
+                                    Morning
+                                </option>
+
+                                <option>
+                                    Afternoon
+                                </option>
+
+                                <option>
+                                    Evening
+                                </option>
+
+                                <option>
+                                    Weekends
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Area</label>
+
+                            <input
+                                id="volunteerArea"
+                                type="text"
+                                placeholder="Your area"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary submit-btn"
+                    >
+                        🤝 Register Volunteer
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- VOLUNTEER LIST -->
+
+        <div class="sub-heading">
+
+            <h3>Registered Volunteers</h3>
+
+            <span id="volunteerBadge">
+                0 Volunteers
+            </span>
+
+        </div>
+
+
+        <div id="volunteersList" class="volunteer-grid">
+
+            <div class="empty-box">
+
+                <div>👥</div>
+
+                <h3>No volunteers yet</h3>
+
+                <p>
+                    Registered volunteers will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MAP ================= -->
+
+<section id="mapSection" class="section map-section">
+
+    <div class="container">
+
+        <div class="section-title split-title">
+
+            <div>
+
+                <span>LOCATION INTELLIGENCE</span>
+
+                <h2>Emergency Response Map</h2>
+
+                <p>
+                    View emergencies and community resources.
+                </p>
+
+            </div>
+
+            <div class="map-legend">
+
+                <span>
+                    <i class="legend emergency"></i>
+                    Emergency
+                </span>
+
+                <span>
+                    <i class="legend shelter"></i>
+                    Shelter
+                </span>
+
+                <span>
+                    <i class="legend medical"></i>
+                    Medical
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="map-card">
+
+            <div id="map"></div>
+
+            <div id="mapPickBanner" class="map-banner hidden">
+
+                📍 Click anywhere on the map to select
+                emergency location.
+
+                <button id="cancelMapPick">
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RESOURCES ================= -->
+
+<section id="resources" class="section">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>COMMUNITY SUPPORT</span>
+
+            <h2>Emergency Resources</h2>
+
+            <p>
+                Important locations available to the community.
+            </p>
+
+        </div>
+
+
+        <div id="resourcesList" class="resource-grid">
+            <!-- JS -->
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ASSIGN MODAL ================= -->
+
+<div id="assignModal" class="modal hidden">
+
+    <div class="modal-overlay"></div>
+
+    <div class="modal-content">
+
+        <button
+            id="closeModal"
+            class="modal-close"
+        >
+            ×
+        </button>
+
+        <div class="modal-icon">
+            🤝
+        </div>
+
+        <h2>Assign Volunteer</h2>
+
+        <p>
+            Choose an available volunteer for this request.
+        </p>
+
+        <select id="assignSelect">
+
+            <option value="">
+                Select volunteer
+            </option>
+
+        </select>
+
+        <button
+            id="confirmAssign"
+            class="btn btn-primary full-btn"
+        >
+            ✓ Assign Volunteer
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast" class="toast">
+
+    <span id="toastIcon">✓</span>
+
+    <span id="toastText">
+        Success
+    </span>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-content">
+
+        <div class="brand footer-brand">
+
+            <div class="brand-icon">
+                🛡️
+            </div>
+
+            <div>
+                <h2>ResQ<span>Link</span></h2>
+                <small>Emergency Response System</small>
+            </div>
+
+        </div>
+
+
+        <p>
+            Round 2 • Community Emergency Management Project
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- Leaflet -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
+
+
+<!-- IMPORTANT:
+     map.js MUST come before script.js
+-->
+
+<script src="map.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
